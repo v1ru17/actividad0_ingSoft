@@ -1,0 +1,11 @@
+<h1>{{ question.question_text}}</h1>
+
+<ul>
+    {% for choice in question.choice_set.all %} {# lo de abajo esta puesto asi
+    porque el editor me lo formatea al texto y entonces django lo toma como
+    texto limpio #}
+    <li>{{ choice.votes }} vote{% if choice.votes != 1 %}s{% endif %}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}">vote again?</a>
